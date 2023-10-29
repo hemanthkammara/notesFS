@@ -16,9 +16,19 @@ app.get("/",(req,res)=>{
 res.send({"msg":"testing server express"})
 })
 
+try {
+  (async function () {
+    await connection;
+  })();
+  console.log(`Server  connected to database`);
+} catch (err) {
+  console.log("Error while conneting");
+  console.log(err);
+}
+
 app.listen(4500,async(req,res)=>{
     try{
-        await connection
+        // await connection
         console.log("db connected");
         console.log("server running at port 4500")
 
